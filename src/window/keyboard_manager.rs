@@ -12,7 +12,6 @@ use glutin::{
 
 enum InputEvent {
     KeyEvent(KeyEvent),
-    ImeInput(String),
 }
 pub struct KeyboardManager {
     shift: bool,
@@ -59,13 +58,13 @@ impl KeyboardManager {
                 self.queued_input_events
                     .push(InputEvent::KeyEvent(key_event.clone()));
             }
-            Event::WindowEvent {
-                event: WindowEvent::ReceivedImeText(string),
-                ..
-            } => {
-                self.queued_input_events
-                    .push(InputEvent::ImeInput(string.to_string()));
-            }
+            // Event::WindowEvent {
+            //     event: WindowEvent::Ime(string),
+            //     ..
+            // } => {
+            //     self.queued_input_events
+            //         .push(InputEvent::ImeInput(string.to_string()));
+            // }
             Event::WindowEvent {
                 event: WindowEvent::ModifiersChanged(modifiers),
                 ..
@@ -99,13 +98,6 @@ impl KeyboardManager {
                                         // should wait for the next input text_with_all_modifiers, and ignore the next ime.
                                         next_dead_key = dead_key;
                                     }
-                                }
-                            }
-                            InputEvent::ImeInput(raw_input) => {
-                                if self.prev_dead_key.is_none() {
-                                    EVENT_AGGREGATOR.send(UiCommand::Serial(
-                                        SerialCommand::Keyboard(raw_input.to_string()),
-                                    ));
                                 }
                             }
                         }
