@@ -20,7 +20,6 @@ use tokio::sync::mpsc::UnboundedReceiver;
 use glutin::platform::macos::WindowBuilderExtMacOS;
 
 #[cfg(target_os = "linux")]
-use glutin::platform::unix::WindowBuilderExtUnix;
 
 use image::{load_from_memory, GenericImageView, Pixel};
 use keyboard_manager::KeyboardManager;
