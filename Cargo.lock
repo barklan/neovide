@@ -2756,7 +2756,7 @@ checksum = "c811ca4a8c853ef420abd8592ba53ddbbac90410fab6903b3e79972a631f7680"
 [[package]]
 name = "winit"
 version = "0.26.1"
-source = "git+https://github.com/maroider/winit?branch=new-keyboard-linux#ba8023a82782f33fa2b40d296fc2adfc32320d2f"
+source = "git+https://github.com/maroider/winit?branch=new-keyboard-linux#9d077ab72955b60e9467eefd5962675496c6879c"
 dependencies = [
  "bitflags",
  "cocoa",
